@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+
+<style>
+body {
+  background: black;
+  color: white;
+}
+
+.interface {
+  border: 2px solid white;
+  height: 800px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+
+.main {
+  display: grid;
+  grid-template-columns: 200px auto auto;
+  grid-template-rows: 200px 550px 1fr;
+  grid-template-areas:
+  "top top top top"
+  "aside content content content"
+  "foot foot foot foot";
+  height: 100%;
+
+}
+
+
+.flex_center {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+/* header style */
+.grid_header{ 
+  grid-area:top;
+  border: 2px solid blue;
+
+  }
+
+
+/* aside  style */
+.grid_aside{
+ grid-area:aside;
+ border: 2px solid yellow;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+
+ }
+ 
+ .aside_title {
+   border: 2px solid green;
+   height: 50px;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ .nav_continer {
+   border: 2px solid green;
+   width: 100%;
+   display: block;
+   text-align:center;
+   height: 100%;
+   overflow: auto;
+
+
+ }
+ 
+ .nav_link {
+   border: 2px solid gold;
+   height: 10%;
+   width: 95%;
+   padding: 2px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+/* content  style */
+.grid_content{
+  grid-area:content;
+  border: 2px solid red;
+  display: block;
+  overflow: auto;
+  
+  }
+  
+.content_section {
+  border: 2px solid gold;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80%;
+}
+
+.content_section .section_title {
+   height: 10%;
+   border: 2px solid green;
+   overflow: auto;
+}
+
+.content_section .section_main {
+   height: 88%;
+   border: 2px solid green;
+   overflow: auto;
+}
+
+.load_icon_style { 
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.load_icon_style img {
+
+}
+/* footer  style */
+.grid_footer{
+  grid-area:foot;
+  border: 2px solid green;
+  }
+
+
+/* mobile style */
+
+@media only screen and (max-width: 600px) {
+
+.main {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 100px 150px 2fr 100px;
+  grid-template-areas:
+  "top top"
+  "aside aside"
+  "content content"
+  "foot foot";
+  height: 100%;
+
+}
+
+/* navlink */
+ .nav_link { height: 35px;margin:10px;}
+
+}
+</style>
+</head>
+<body>
+
+<!-- /searchform/<string:username>/<string:csv_filename -->
+
+<div class="interface">
+
+  <div class="main">
+    <div class="grid_header grid_box flex_center">11</div>
+    
+    <!-- aside -->
+    <div class="grid_aside grid_box ">
+    
+    <div class="aside_title">Select App</div>
+    <div class="nav_continer">
+      <div class="nav_link">1</div>
+      <div class="nav_link">1</div>
+      <div class="nav_link">1</div>
+      <div class="nav_link">1</div>
+      <div class="nav_link">1</div>
+      <div class="nav_link">1</div>
+      
+    </div>
+    </div>
+    <!-- end aside -->
+    
+    <!-- content -->
+    
+    <!-- load icon when scraper working or something loads -->
+    <div id="load_icon" class="load_icon_style" style="width:100%;" style="display:none;">
+      <img src="https://i.imgur.com/LL6czuj.gif" alt="load image gif">
+    </div>
+    <div class="grid_content grid_box" id="content_sectionid">
+    
+      
+      <div class="content_section">
+         <!-- data-action == current status -->
+        <div class="section_title flex_center" data-action='open'>1</div>
+        <div class="section_main">2</div>
+      </div>
+      <div class="content_section">
+        <div class="section_title flex_center" data-action='close'>3</div>
+        <div class="section_main">4</div>
+      </div>
+      <div class="content_section">
+        <div class="section_title flex_center" data-action='close'>5</div>
+        <div class="section_main">6</div>
+      </div>
+      <div class="content_section">
+        <div class="section_title flex_center" data-action='close'>7</div>
+        <div class="section_main">8</div>
+      </div>
+    
+    
+    </div>
+    
+    <!-- end content -->
+    <div class="grid_footer grid_box flex_center">4</div>
+ </div>
+
+</div>
+
+
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+
+   const section_titles = document.querySelectorAll(".section_title");
+   
+   // content element
+   const content_container = document.querySelector("#content_sectionid");
+   const load_container = document.querySelector("#load_icon");
+   
+   
+   
+   // load function 
+   
+     const show_load = ()=> {
+ load_container.style.display = "flex";
+ content_container.style.display = "none";
+ load_container.classList.add("grid_content");
+ return true;
+  };
+  
+ const hide_load = ()=> {
+ load_container.style.display = "none";
+ content_container.style.display = "block";
+ load_container.classList.remove("grid_content");
+ return true;
+  };
+  
+
+ const showload_for = (seconds)=> {
+  show_load();
+  let time_towait_milleseconds = (seconds * 1000) - 50;
+  setTimeout(function(){ hide_load(); return true;}, time_towait_milleseconds);
+ };
+ 
+ 
+ 
+
+    // AI no direct selector
+   const close = (element) => {
+     
+     element.nextElementSibling.style.display = "none";
+     element.parentElement.style.height = '10%';
+     element.style.height = "100%";
+     
+   };
+   
+   const open = (element) => {
+     element.nextElementSibling.style.display = "block";
+     element.parentElement.style.height = '80%';
+     element.style.height = "10%";
+     showload_for(1);
+   };
+   
+   const direct_action = (event) => {
+     action = event.target.getAttribute("data-action");
+     element = event.target;
+     if (action == "open"){ 
+        event.target.setAttribute("data-action", "close");
+        close(element);
+        return true;
+     } else {
+        event.target.setAttribute("data-action", "open");
+        open(element);
+        return true;
+     }
+   };
+   
+  const collapse_titles_apply = () => {
+    
+   
+    section_titles.forEach( (title) => { 
+        title.addEventListener( "click", direct_action );
+    });
+  };
+ 
+   // this function to check onload status to open the correct active
+  const correct_oder = ()=> {
+    section_titles.forEach( (sec)=> {
+       if (sec.getAttribute("data-action") == "open") {
+         open(sec);
+       } else {
+         close(sec);
+       }
+    });
+  };
+ 
+ 
+
+
+
+
+ 
+
+   correct_oder();
+   // show_load();
+   collapse_titles_apply();
+   showload_for(1);
+ 
+});
+
+
+</script>
+
+</body>
+</html>
