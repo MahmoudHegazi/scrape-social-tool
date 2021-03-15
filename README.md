@@ -1,0 +1,2 @@
+# scrape-social-tool
+Selenium Tool with Flask API, and Admin GUI and Admin Endpoint this Tool Will Make scrape social media easy Just clone and install in your device , and enjoy responsive GUI to control your scraping Robot and make different tasks, you can scrape by ably search on social media forms name and get some or all data CSV or JSON, by direct url and get all public and posts data CSV or JSON, you can do multiple tasks like download data for some public urls, or some key word search
