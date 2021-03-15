@@ -41,31 +41,39 @@ body {
 /* header style */
 .grid_header{ 
   grid-area:top;
-  border: 2px solid blue;
+  border: 2px solid white;
+  background: url("https://c4.wallpaperflare.com/wallpaper/704/561/129/background-pattern-black-gold-hd-wallpaper-thumb.jpg");
 
+  }
+  
+  .head_text {
+    font-size: 3em;
+    text-align: center;
   }
 
 
 /* aside  style */
 .grid_aside{
  grid-area:aside;
- border: 2px solid yellow;
+ border: 2px solid white;
  display: flex;
  flex-direction: column;
  align-items: center;
+   background: url("https://c4.wallpaperflare.com/wallpaper/704/561/129/background-pattern-black-gold-hd-wallpaper-thumb.jpg");
 
  }
  
  .aside_title {
-   border: 2px solid green;
+
    height: 50px;
    width: 100%;
    display: flex;
    justify-content: center;
    align-items: center;
+   background: black;
  }
  .nav_continer {
-   border: 2px solid green;
+   border: 2px solid white;
    width: 100%;
    display: block;
    text-align:center;
@@ -76,46 +84,80 @@ body {
  }
  
  .nav_link {
-   border: 2px solid gold;
+   border: 2px solid white;
    height: 10%;
    width: 95%;
    padding: 2px;
    display: flex;
    justify-content: center;
    align-items: center;
+   background: url("https://media.istockphoto.com/vectors/black-abstract-background-vector-id686873178?k=6&m=686873178&s=612x612&w=0&h=RuUcV0I4JIhBCCWwGbFhflhLRItGk2Xp9H7xEe3uL_4=");
+   color: white;
+   cursor: pointer;
+ }
+ 
+ .nav_link:hover {
+   background: transparent;
+   opacity: .8;
  }
 
 /* content  style */
 .grid_content{
   grid-area:content;
-  border: 2px solid red;
+
   display: block;
   overflow: auto;
+
+   background: url("https://c4.wallpaperflare.com/wallpaper/704/561/129/background-pattern-black-gold-hd-wallpaper-thumb.jpg");
   
   }
   
 .content_section {
-  border: 2px solid gold;
+  margin-top: 30px;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
   height: 80%;
+  background: black;
 }
 
 .content_section .section_title {
    height: 10%;
-   border: 2px solid green;
+border: 2px solid white;
    overflow: auto;
+   cursor: pointer;
 }
 
 .content_section .section_main {
    height: 88%;
-   border: 2px solid green;
    overflow: auto;
+   border: 2px solid white;
+   text-align: center;
+   
 }
 
+.section_main .input_field {
+  border: 2px solid gold;
+  width: 90%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 20%;
+  display: block;
+  padding-top: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.csv_json_section {
+ height:40% !important;
+ text-align: center;
+ border: 2px solid green;
+
+
+}
 .load_icon_style { 
-  border: 2px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -128,7 +170,7 @@ body {
 /* footer  style */
 .grid_footer{
   grid-area:foot;
-  border: 2px solid green;
+  border: 2px solid white;
   }
 
 
@@ -139,7 +181,7 @@ body {
 .main {
   display: grid;
   grid-template-columns: auto auto;
-  grid-template-rows: 100px 150px 2fr 100px;
+  grid-template-rows: 100px 200px 2fr 100px;
   grid-template-areas:
   "top top"
   "aside aside"
@@ -150,8 +192,13 @@ body {
 }
 
 /* navlink */
- .nav_link { height: 35px;margin:10px;}
-
+ .nav_link { height: 35px;margin-bottom:10px; width:80%; margin-left:auto; margin-right:auto;}
+ 
+/* headtext */
+  .head_text {
+    font-size: 2em;
+    text-align: center;
+  }
 }
 </style>
 </head>
@@ -162,7 +209,9 @@ body {
 <div class="interface">
 
   <div class="main">
-    <div class="grid_header grid_box flex_center">11</div>
+    <div class="grid_header grid_box flex_center">
+    <h2 class="head_text">Soical Scraper Tool </h2>
+    </div>
     
     <!-- aside -->
     <div class="grid_aside grid_box ">
@@ -183,27 +232,67 @@ body {
     <!-- content -->
     
     <!-- load icon when scraper working or something loads -->
-    <div id="load_icon" class="load_icon_style" style="width:100%;" style="display:none;">
-      <img src="https://i.imgur.com/LL6czuj.gif" alt="load image gif">
+    <div id="load_icon" class="load_icon_style" style="width:99%;height:100%;" style="display:none;">
+      <img src="https://i.pinimg.com/originals/90/80/60/9080607321ab98fa3e70dd24b2513a20.gif" alt="load image gif" style="width:100%; height:100%;">
     </div>
+    
+    
+
+    
+    
     <div class="grid_content grid_box" id="content_sectionid">
     
       
       <div class="content_section">
          <!-- data-action == current status -->
-        <div class="section_title flex_center" data-action='open'>1</div>
-        <div class="section_main">2</div>
+        <div title="click to Close" class="section_title flex_center" data-action='open'>Search Form (Single Action)</div>
+        <div class="section_main">
+        
+
+          <div class="input_field">
+            <label for="url_link">Profile URL: </label>
+            <input id="url_link" name="url_link" required="required">
+          </div>
+          <div class="input_field">
+            <label for="nametype" >Scrape Name </label>
+            
+            
+            <input type="radio" value="single" name="nametype" checked="checked" required="required">
+            first name 
+            <input type="radio" value="all" name="nametype" required="required">
+            all
+          </div>
+          <div class="input_field csv_json_section" style="">
+          
+        
+          
+            <div class="json_container">
+             <input type="radio" value="json" id="download_json_radio" name="download_type" checked="checked" required="required">
+             <label for="json_file" >JSON FILE Name: </label><br />
+             <input id="json_file_inpt" name="json_file">
+            </div>
+            <br />
+            
+            
+
+            <div class="csv_container">
+            <input type="radio" value="csv" id="download_csv_radio" name="download_type" required="required">
+             <label for="csv_file" >CSV FILE Name: </label><br />
+             <input id="csv_file_inpt" name="csv_file">
+            </div>
+          </div>
+        </div>
       </div>
       <div class="content_section">
-        <div class="section_title flex_center" data-action='close'>3</div>
+        <div title="click to open" class="section_title flex_center" data-action='close'>Search By URL (Single Action)</div>
         <div class="section_main">4</div>
       </div>
       <div class="content_section">
-        <div class="section_title flex_center" data-action='close'>5</div>
+        <div title="click to open" class="section_title flex_center" data-action='close'>Search Form (multiple Action)</div>
         <div class="section_main">6</div>
       </div>
       <div class="content_section">
-        <div class="section_title flex_center" data-action='close'>7</div>
+        <div title="click to open" class="section_title flex_center" data-action='close'>Search By URL (multiple Action)</div>
         <div class="section_main">8</div>
       </div>
     
@@ -211,7 +300,9 @@ body {
     </div>
     
     <!-- end content -->
-    <div class="grid_footer grid_box flex_center">4</div>
+    <div class="grid_footer grid_box flex_center">
+      <p class="copyright_p"><em>Developed and Desgined By Python King</em></p>
+    </div>
  </div>
 
 </div>
@@ -225,9 +316,49 @@ window.addEventListener('DOMContentLoaded', (event) => {
    // content element
    const content_container = document.querySelector("#content_sectionid");
    const load_container = document.querySelector("#load_icon");
+   const how_to = document.querySelector("#how_to");
+   const how_to_btn = document.querySelector("#how_to_btn");
+   
+   const json_download_radio = document.querySelector("#download_json_radio");
+   const csv_download_radio = document.querySelector("#download_csv_radio");
+   
+   const json_file_name = document.querySelector("#json_file_inpt");
+   const csv_file_name = document.querySelector("#csv_file_inpt");
    
    
    
+
+   const download_ajson = () => {
+   
+     json_download_radio.setAttribute('checked', 'checked');
+     json_file_name.setAttribute('required', 'required');
+     json_file_name.removeAttribute('disabled');
+     csv_file_name.removeAttribute('required');
+     csv_file_name.setAttribute('disabled', 'disabled');
+     
+   }
+   const download_csv = () => {
+     
+     csv_download_radio.setAttribute('checked', 'checked');
+     csv_file_name.removeAttribute('disabled');
+     csv_file_name.setAttribute('required', 'required');
+     json_file_name.setAttribute('disabled', 'disabled');
+     json_file_name.removeAttribute('required');
+
+     
+   }
+   
+   
+   
+   if (csv_download_radio.checked == true) {
+      download_csv();
+   } else {
+      download_ajson();
+   }
+   
+   
+   json_download_radio.addEventListener( 'click', download_ajson );
+   csv_download_radio.addEventListener( 'click', download_csv );
    // load function 
    
      const show_load = ()=> {
@@ -275,10 +406,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
      element = event.target;
      if (action == "open"){ 
         event.target.setAttribute("data-action", "close");
+        event.target.setAttribute("title", "Click To Open");
         close(element);
         return true;
      } else {
         event.target.setAttribute("data-action", "open");
+        event.target.setAttribute("title", "Click To Close");
         open(element);
         return true;
      }
@@ -309,11 +442,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
  
+ 
+ 
 
-   correct_oder();
-   // show_load();
-   collapse_titles_apply();
-   showload_for(1);
+     correct_oder();
+
+    collapse_titles_apply();
+    showload_for(1);
+   
  
 });
 
